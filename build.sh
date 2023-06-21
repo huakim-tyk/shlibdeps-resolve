@@ -83,6 +83,8 @@ add pkgdesc "'An shared library dependencies resolver'"
 add arch "('all')"
 add url "https://github.com/huakim-tyk/shlibdeps-resolve/"
 add license "('GPL2')"
+add source '()'
+add sha256sums '()'
 
 #shopt -s globstar
 
