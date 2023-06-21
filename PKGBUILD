@@ -15,11 +15,11 @@ $'build.sh'
 $'shlibdeps-resolve.pl'
 )
 sha256sums=(
-$'e0cda23e99b2d6b32a23caa729a32ea867dd7bbf4c81bfc6acdfee4222212364'
+$'06a0cb545a0e7228fd41f3f0bfcb46f6c252bd0b657491836d99804876923243'
 $'b450ce7d8564aa47801eb90b18c013e7223306974272569e012d86a16c2938f3'
 )
 package () 
 { 
-    depends=('perl' 'libdpkg-parse' 'libdpkg-shlibdeps-resolve');
+    depends=('perl' 'libdpkg-parse-perl' 'libdpkg-shlibdeps-resolve-perl');
     install -Dm755 "${srcdir}/shlibdeps-resolve.pl" "${pkgdir}/usr/bin/shlibdeps-resolve"
 }

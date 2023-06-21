@@ -89,7 +89,7 @@ add sha256sums '()'
 #shopt -s globstar
 
 package(){
-    depends=('perl' 'libdpkg-parse' 'libdpkg-shlibdeps-resolve')
+    depends=('perl' 'libdpkg-parse-perl' 'libdpkg-shlibdeps-resolve-perl')
     install -Dm755 "${srcdir}/shlibdeps-resolve.pl" \
         "${pkgdir}/usr/bin/shlibdeps-resolve"
 }
