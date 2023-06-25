@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 use Getopt::Long GetOptionsFromArray;
-
+use Module::Load;
 
 my $bin = [];
 my $root = [];
@@ -13,6 +13,9 @@ GetOptionsFromArray(\@ARGV,
 "help|h" => \$help,
 "root|r=s" => $root);
 
+
+if (! scalar @$bin)  { $bin  = undef; }
+if (! scalar @$root) { $root = undef; }
 
 if ($help){
     help:
@@ -28,15 +31,12 @@ Options:
     if ($version) {
         print($VERSION); 
     } else {
-        if (scalar @$bin){
-
-
-            use DPKG::Parse::Info;
-            use DPKG::ShlibDeps::Resolve qw(scan_shared_lib);
-            my $info = DPKG::Parse::Info->new;
-            $info->parse;
-
-            print(join("\n", scan_shared_lib($info, $bin, $root)));
+        if (defined $bin){
+            load 'DPKG::ShlibDeps::Resolve', qw(scan_shared_lib);
+            print(join("\n", scan_shared_lib(
+                'base', $bin, 
+                'root', $root
+            )));
         } else {
             goto help;
         }
